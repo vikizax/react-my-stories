@@ -35,6 +35,7 @@ export const BottomContainer = styled.div`
   color: #fff;
   overflow: auto;
   z-index: 1000;
+  background: #00000038;
   &::-webkit-scrollbar {
     width: ${pxToRem(5)};
   }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import Loader from "../Loader";
 import statusAtom from "../../recoil/atoms/status.atom";
@@ -19,6 +19,16 @@ const Image = ({ imgUrl, imageContainerStyle, imageStyle }: IImageProps) => {
   const handleImageLoad = (status: boolean) => {
     setstatus((prev) => ({ ...prev, isLoading: status, isMounted: true }));
   };
+
+  useEffect(() => {
+    if (
+      imageRef.current?.src === imgUrl &&
+      status.isLoading &&
+      !status.isMounted
+    ) {
+      setstatus((prev) => ({ ...prev, isLoading: false, isMounted: true }));
+    }
+  }, [status, imageRef]);
 
   return (
     <>
