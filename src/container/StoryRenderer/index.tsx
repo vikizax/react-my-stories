@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { useRecoilValue } from "recoil";
 import Image from "../../component/Image";
 import Video from "../../component/Video";
@@ -27,9 +27,11 @@ const StoryRenderer = ({
 
   return (
     <>
-      <HeadingContainer style={headingStyle}>
-        {story.stories.length > 0 && story.stories[status.currentIndex].title}
-      </HeadingContainer>
+      {story.stories.length > 0 && story.stories[status.currentIndex].title && (
+        <HeadingContainer style={headingStyle}>
+          {story.stories[status.currentIndex].title}
+        </HeadingContainer>
+      )}
       {story.stories.length > 0 &&
       story.stories[status.currentIndex].type === "img" ? (
         <Image
@@ -44,12 +46,14 @@ const StoryRenderer = ({
           videoContainerStyle={story.videoContainerStyle}
         />
       )}
-      <BottomContainer style={bottomContainerStyle}>
-        <TextContent style={bottomTextStyle}>
-          {story.stories.length > 0 &&
-            story.stories[status.currentIndex].description}
-        </TextContent>
-      </BottomContainer>
+      {story.stories.length > 0 &&
+        story.stories[status.currentIndex].description && (
+          <BottomContainer style={bottomContainerStyle}>
+            <TextContent style={bottomTextStyle}>
+              {story.stories[status.currentIndex].description}
+            </TextContent>
+          </BottomContainer>
+        )}
     </>
   );
 };
