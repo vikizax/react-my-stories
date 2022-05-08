@@ -19,4 +19,5 @@ export const CloseIcon = styled(CloseI)`
   padding: ${pxToRem(5)} ${pxToRem(10)};
   fill: white;
   height: ${pxToRem(20)};
+  filter: drop-shadow(0 0px 3px rgba(0, 0, 0, 0.9));
 `;
