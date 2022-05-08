@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { useEffect, useRef } from "react";
 import StoryRenderer from "../../container/StoryRenderer";
 import { StoryModel } from "../../model/story.model";
@@ -15,8 +15,7 @@ import Close from "../../component/Close";
 const Stories = (props: StoryModel) => {
   const setStory = useSetRecoilState(storyAtom);
   const stories = useRecoilValue(storiesSelector);
-  // const setTimer = useSetRecoilState(timerAtom);
-  const [timer, setTimer] = useRecoilState(timerAtom);
+  const setTimer = useSetRecoilState(timerAtom);
   const [status, setStatus] = useRecoilState(statusAtom);
   const pauseRef = useRef<any>(null);
 
@@ -27,6 +26,10 @@ const Stories = (props: StoryModel) => {
       isLoading: true,
       isMounted: false,
       total: props.stories.length ?? 0,
+    }));
+    setTimer((prev) => ({
+      ...prev,
+      interval: props.interval ?? DEFAULT_INTERVAL,
     }));
   }, [props]);
 
@@ -41,7 +44,7 @@ const Stories = (props: StoryModel) => {
       setTimer((prev) => ({
         interval:
           stories[status.currentIndex - 1].type === "img"
-            ? DEFAULT_INTERVAL
+            ? props.interval ?? DEFAULT_INTERVAL
             : prev.interval,
         timeTracker: 0,
       }));
@@ -62,7 +65,7 @@ const Stories = (props: StoryModel) => {
       setTimer((prev) => ({
         interval:
           stories[status.currentIndex + 1].type === "img"
-            ? DEFAULT_INTERVAL
+            ? props.interval ?? DEFAULT_INTERVAL
             : prev.interval,
         timeTracker: 0,
       }));
@@ -94,8 +97,16 @@ const Stories = (props: StoryModel) => {
   return (
     <StoryBody style={props.storyBodyStyle}>
       <Close closeCallback={props.closeCallback} />
-      <Progress nextCallback={props.nextCallback} />
-      <StoryRenderer displayLoader={props.displayLoader} />
+      <Progress
+        nextCallback={props.nextCallback}
+        interval={props.interval ?? DEFAULT_INTERVAL}
+      />
+      <StoryRenderer
+        displayLoader={props.displayLoader}
+        headingStyle={props.headingStyle}
+        bottomContainerStyle={props.bottomContainerStyle}
+        bottomTextStyle={props.bottomTextStyle}
+      />
       <StoryControlsOverlay>
         <StoryControls
           onMouseDown={debouncePause}

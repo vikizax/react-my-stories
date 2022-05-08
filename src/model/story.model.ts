@@ -17,6 +17,9 @@ export interface StoryModel {
   storyBodyStyle?: CSSProperties;
   loop?: boolean;
   displayLoader?: boolean;
+  headingStyle?: CSSProperties;
+  bottomContainerStyle?: CSSProperties;
+  bottomTextStyle?: CSSProperties;
   previousCallback?: (...args: any[]) => void;
   nextCallback?: (...args: any[]) => void;
   closeCallback?: (...args: any[]) => void;

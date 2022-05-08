@@ -9,9 +9,17 @@ import { HeadingContainer, BottomContainer, TextContent } from "./styles";
 
 interface IStoryRendererProps {
   displayLoader?: boolean;
+  headingStyle?: React.CSSProperties;
+  bottomContainerStyle?: React.CSSProperties;
+  bottomTextStyle?: React.CSSProperties;
 }
 
-const StoryRenderer = ({ displayLoader }: IStoryRendererProps) => {
+const StoryRenderer = ({
+  displayLoader,
+  headingStyle,
+  bottomContainerStyle,
+  bottomTextStyle,
+}: IStoryRendererProps) => {
   const story = useRecoilValue(storyAtom);
   const status = useRecoilValue(statusAtom);
 
@@ -19,7 +27,7 @@ const StoryRenderer = ({ displayLoader }: IStoryRendererProps) => {
 
   return (
     <>
-      <HeadingContainer>
+      <HeadingContainer style={headingStyle}>
         {story.stories.length > 0 && story.stories[status.currentIndex].title}
       </HeadingContainer>
       {story.stories.length > 0 &&
@@ -36,8 +44,8 @@ const StoryRenderer = ({ displayLoader }: IStoryRendererProps) => {
           videoContainerStyle={story.videoContainerStyle}
         />
       )}
-      <BottomContainer>
-        <TextContent>
+      <BottomContainer style={bottomContainerStyle}>
+        <TextContent style={bottomTextStyle}>
           {story.stories.length > 0 &&
             story.stories[status.currentIndex].description}
         </TextContent>
