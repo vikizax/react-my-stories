@@ -26,11 +26,12 @@ const Stories = (props: StoryModel) => {
       isLoading: true,
       isMounted: false,
       total: props.stories.length ?? 0,
+      currentIndex: 0,
     }));
-    setTimer((prev) => ({
-      ...prev,
+    setTimer({
+      timeTracker: 0,
       interval: props.interval ?? DEFAULT_INTERVAL,
-    }));
+    });
   }, [props]);
 
   const debouncePause = (e: React.MouseEvent | React.TouchEvent) => {
