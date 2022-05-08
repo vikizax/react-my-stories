@@ -26,7 +26,6 @@ const Stories = (props: StoryModel) => {
       isLoading: true,
       isMounted: false,
       total: props.stories.length ?? 0,
-      currentIndex: 0,
     }));
     setTimer({
       timeTracker: 0,
