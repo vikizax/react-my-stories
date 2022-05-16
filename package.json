@@ -1,6 +1,6 @@
 {
   "name": "react-my-stories",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Insta/WhatsApp type stories",
   "main": "dist/index.js",
   "scripts": {
@@ -9,9 +9,9 @@
   },
   "author": "vikizax",
   "repository": {
-		"type": "git",
-		"url": "git+https://github.com/vikizax/react-my-stories.git"
-	},
+    "type": "git",
+    "url": "git+https://github.com/vikizax/react-my-stories.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -31,13 +31,15 @@
     "rollup-plugin-typescript2": "^0.31.1",
     "rollup-plugin-uglify": "^6.0.4",
     "styled-components": "^5.3.5",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "refresh-rate": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "recoil": "^0.7.2",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "refresh-rate": "^1.0.0"
   },
   "dependencies": {}
 }

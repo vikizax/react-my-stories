@@ -55,10 +55,12 @@ const Progress = ({ nextCallback, interval }: IProgressProps) => {
 
     // calculate the time difference between start and now
     setTimer((prev) => {
-      currentTimer = prev.timeTracker + 100 / ((prev.interval / 1000) * 60);
+      currentTimer =
+        prev.timeTracker + 100 / ((prev.interval / 1000) * status.fps);
       return {
         ...prev,
-        timeTracker: prev.timeTracker + 100 / ((prev.interval / 1000) * 60),
+        timeTracker:
+          prev.timeTracker + 100 / ((prev.interval / 1000) * status.fps),
       };
     });
 

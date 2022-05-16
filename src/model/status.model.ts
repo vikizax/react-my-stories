@@ -3,5 +3,6 @@ export interface Status {
     total: number;
     isLoading: boolean;
     isMounted: boolean;
-    status: 'playing' | 'paused'
+    status: 'playing' | 'paused';
+    fps: number;
 }
