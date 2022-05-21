@@ -4,4 +4,5 @@ export interface Status {
     isLoading: boolean;
     isMounted: boolean;
     status: 'playing' | 'paused';
+    fps: number;
 }
