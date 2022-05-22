@@ -1,6 +1,6 @@
 {
   "name": "react-my-stories",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Insta/WhatsApp type stories",
   "main": "dist/index.js",
   "scripts": {

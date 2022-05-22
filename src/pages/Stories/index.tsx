@@ -23,7 +23,7 @@ const Stories = (props: StoryModel) => {
 
   const initialise = async () => {
     setLoading(true);
-    const fps = await refreshRate({ sampleCount: 130 });
+    const fps = await refreshRate({ sampleCount: 160 });
     setLoading(false);
 
     setStory(props);
