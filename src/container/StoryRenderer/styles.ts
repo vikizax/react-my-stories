@@ -54,4 +54,5 @@ export const TextContent = styled.div`
   font-size: ${pxToRem(16)};
   color: #fff;
   text-align: center;
+  justify-content: center;
 `;

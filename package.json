@@ -1,6 +1,6 @@
 {
   "name": "react-my-stories",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Insta/WhatsApp type stories",
   "main": "dist/index.js",
   "scripts": {
@@ -31,15 +31,13 @@
     "rollup-plugin-typescript2": "^0.31.1",
     "rollup-plugin-uglify": "^6.0.4",
     "styled-components": "^5.3.5",
-    "typescript": "^4.5.4",
-    "refresh-rate": "^1.0.0"
+    "typescript": "^4.5.4"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "recoil": "^0.7.2",
-    "styled-components": "^5.3.5",
-    "refresh-rate": "^1.0.0"
+    "styled-components": "^5.3.5"
   },
   "dependencies": {}
 }

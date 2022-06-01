@@ -18,6 +18,7 @@ export interface StoryModel {
     headingStyle?: CSSProperties;
     bottomContainerStyle?: CSSProperties;
     bottomTextStyle?: CSSProperties;
+    refreshRate?: number;
     previousCallback?: (...args: any[]) => void;
     nextCallback?: (...args: any[]) => void;
     closeCallback?: (...args: any[]) => void;

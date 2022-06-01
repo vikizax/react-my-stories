@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import StoryRenderer from "../../container/StoryRenderer";
 import { StoryModel } from "../../model/story.model";
 import { StoryBody, StoryControlsOverlay, StoryControls } from "./styles";
@@ -11,7 +11,6 @@ import statusAtom from "../../recoil/atoms/status.atom";
 import Progress from "../../container/Progress";
 import { DEFAULT_INTERVAL } from "../../constant";
 import Close from "../../component/Close";
-import refreshRate from "refresh-rate";
 
 const Stories = (props: StoryModel) => {
   const setStory = useSetRecoilState(storyAtom);
@@ -19,20 +18,14 @@ const Stories = (props: StoryModel) => {
   const setTimer = useSetRecoilState(timerAtom);
   const [status, setStatus] = useRecoilState(statusAtom);
   const pauseRef = useRef<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
   const initialise = async () => {
-    setLoading(true);
-    const fps = await refreshRate({ sampleCount: 160 });
-    setLoading(false);
-
     setStory(props);
     setStatus((prev) => ({
       ...prev,
       isLoading: true,
       isMounted: false,
       total: props.stories.length ?? 0,
-      fps: fps,
+      fps: props.refreshRate ?? prev.fps,
     }));
     setTimer((prev) => ({
       ...prev,
@@ -114,7 +107,7 @@ const Stories = (props: StoryModel) => {
         interval={props.interval ?? DEFAULT_INTERVAL}
       />
       <StoryRenderer
-        displayLoader={props.displayLoader || loading}
+        displayLoader={props.displayLoader}
         headingStyle={props.headingStyle}
         bottomContainerStyle={props.bottomContainerStyle}
         bottomTextStyle={props.bottomTextStyle}
