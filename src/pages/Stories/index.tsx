@@ -22,8 +22,6 @@ const Stories = (props: StoryModel) => {
     setStory(props);
     setStatus((prev) => ({
       ...prev,
-      isLoading: true,
-      isMounted: false,
       total: props.stories.length ?? 0,
       fps: props.refreshRate ?? prev.fps,
     }));
